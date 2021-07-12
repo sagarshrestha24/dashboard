@@ -1,4 +1,4 @@
-# STEPS TO ACCESS WITH KUBEFLOW 1111`11
+# STEPS TO ACCESS WITH KUBEFLOW 1111`1111111
 
 To access the central dashboard, you need to connect to the Istio gateway that provides access to the Kubeflow
 Use the following command to set up port forwarding to the Istio gateway
