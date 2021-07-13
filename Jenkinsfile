@@ -29,7 +29,7 @@ pipeline {
     stage('Deploy') {
       steps{
         script {
-          sh "docker run -d --name admindashboard -p 8083:8083 sagark24/dashboard"
+          sh "docker run -d --name admindashboard -p 8083:8083 sagark24/dashboard:$tags"
         }
       }
     }
