@@ -1,5 +1,4 @@
-# STEPS TO ACCESS WITH KUBEFLOW 1111`1111111 aaaassss
-aaaaaa
+# STEPS TO ACCESS WITH KUBEFLOW
 
 
 To access the central dashboard, you need to connect to the Istio gateway that provides access to the Kubeflow
