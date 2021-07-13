@@ -11,10 +11,10 @@ pipeline {
       steps{
         script {
                
-               
-               sh " kubectl apply -f kaniko-git.yaml -n jenkins"
-               sh "kubectl wait --for condition=containersready pod kaniko -n jenkins"
-               sh "kubectl logs -f kaniko -n jenkins"
+               sh "kubectl delete pod kaniko"
+               sh " kubectl apply -f kaniko-git.yaml "
+               sh "kubectl wait --for condition=containersready pod kaniko"
+               sh "kubectl logs -f kaniko"
         }
       }
     }  
