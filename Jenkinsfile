@@ -1,37 +1,23 @@
 pipeline {
-  environment {
-    registry = "sagark24/dashboard"
-    registryCredential = 'dockerhub'
-  }
   agent any
   stages {
     stage('Cloning Git') {
       steps {
           git branch: 'main', credentialsId: 'GITHUB_TOKEN', url: 'https://github.com/sagarshrestha24/dashboard.git'
+          sh 'git checkout -b main || true'
       }
     }
-     stage('Building image') {
+    stage('Build and push image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$tags"
+               
+               
+               sh " kubectl apply -f kaniko-git.yaml"
+               sh "kubectl wait --for condition=containersready pod kaniko"
+               sh "kubectl logs -f kaniko"
         }
       }
-    }
-    stage('Deploy Image') {
-      steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }
-    stage('Deploy') {
-      steps{
-        script {
-          sh "docker run -d --name admindashboard -p 8083:8083 sagark24/dashboard:$tags"
-        }
-      }
-    }
+    }  
+   
   }
 }
