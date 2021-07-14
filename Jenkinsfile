@@ -73,9 +73,7 @@ stage("Deploy to Develop"){
             }
         }
    stage('Build Release') {
-            when {
-                tag pattern: '^release-*', comparator: "REGEXP"
-            }
+            when { tag "release-*" }
      steps {
         echo 'tags added'
      }
