@@ -24,6 +24,22 @@ pipeline {
        stage("Deploy to Production"){
             when {
                 branch 'main'
+             stage('Build adsbrain-feed-etl/') {
+            when {
+                changeset "adsbrain-feed-etl/**"
+            }
+            steps {
+                echo 'changed in adsbrain-feed-etl/'
+            }
+        }
+        stage('Build ch1-2-migration ') {
+            when {
+                changeset "ch1-2-migration/**"
+            }
+            steps {
+                echo 'changed in Build ch1-2-migration'
+            }
+        }
             }
             steps { 
                 echo 'we are in master branch'
@@ -40,6 +56,22 @@ pipeline {
 stage("Deploy to Develop"){
             when {
                 branch 'develop'
+             stage('Build adsbrain-feed-etl/') {
+            when {
+                changeset "adsbrain-feed-etl/**"
+            }
+            steps {
+                echo 'changed in adsbrain-feed-etl/'
+            }
+        }
+        stage('Build ch1-2-migration ') {
+            when {
+                changeset "ch1-2-migration/**"
+            }
+            steps {
+                echo 'changed in Build ch1-2-migration'
+            }
+        }
             }
             steps {
                 echo 'we are in Develop branch'
@@ -61,21 +93,6 @@ stage("Deploy to Develop"){
         echo 'tags added'
      }
         }
-         stage('Build adsbrain-feed-etl/') {
-            when {
-                changeset "adsbrain-feed-etl/**"
-            }
-            steps {
-                echo 'changed in adsbrain-feed-etl/'
-            }
-        }
-        stage('Build ch1-2-migration ') {
-            when {
-                changeset "ch1-2-migration/**"
-            }
-            steps {
-                echo 'changed in Build ch1-2-migration'
-            }
-        }
+         
     }
 }
