@@ -9,8 +9,7 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug-v0.16.0
     args: ["--context=git://github.com/sagarshrestha24/dashboard",
-
-    "--destination=sagark24/angulardashboard:v3"]
+            "--destination=sagark24/devops-toolkit:1.0.0"]
 
     volumeMounts:
       - name: kaniko-secret
