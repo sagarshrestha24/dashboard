@@ -11,7 +11,7 @@ pipeline {
                sh "kubectl logs -f kaniko"
                         }
                     }
-                }
+                
                 post{
                     success{
                         echo "Build and Push Successfully"
