@@ -2,25 +2,25 @@ pipeline {
  agent any
         stages {
          
-        stage('Push Image') {
-                steps{
-                    script {
-               sh "kubectl delete pod kaniko"
-               sh " kubectl apply -f kaniko-git.yaml"
-               sh "kubectl wait --for condition=containersready pod kaniko"
-               sh "kubectl logs -f kaniko"
-                        }
-                    }
+//         stage('Push Image') {
+//                 steps{
+//                     script {
+//                sh "kubectl delete pod kaniko"
+//                sh " kubectl apply -f kaniko-git.yaml"
+//                sh "kubectl wait --for condition=containersready pod kaniko"
+//                sh "kubectl logs -f kaniko"
+//                         }
+//                     }
                 
-                post{
-                    success{
-                        echo "Build and Push Successfully"
-                    }
-                    failure{
-                        echo "Build and Push Failed"
-                    }
-                }
-        }
+//                 post{
+//                     success{
+//                         echo "Build and Push Successfully"
+//                     }
+//                     failure{
+//                         echo "Build and Push Failed"
+//                     }
+//                 }
+//         }
        stage("Deploy to Production"){
             when {
                 branch 'main'
