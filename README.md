@@ -6,7 +6,7 @@ command : kubectl port-forward svc/istio-ingressgateway 8080:80 -n istio-system
 
 Kubeflow Dashboard will shown on browser and then we can look on navigation bar we will see
 
-- Home
+- Home1
 - Pipelines
 - Notebook Server
 - Katib
