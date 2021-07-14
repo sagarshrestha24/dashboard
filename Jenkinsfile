@@ -23,7 +23,7 @@ pipeline {
         }
        stage("Deploy to Production"){
             when {
-                branch 'master'
+                branch 'main'
             }
             steps { 
                 echo 'we are in master branch'
