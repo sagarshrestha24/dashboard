@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building Docker test image...
+      - docker build -t dashboard -f Dockerfile .
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker tag dashboard:latest 885300287765.dkr.ecr.us-east-2.amazonaws.com/dashboard:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 885300287765.dkr.ecr.us-east-2.amazonaws.com/dashboard:latest
+
