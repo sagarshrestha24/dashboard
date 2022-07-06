@@ -11,6 +11,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building Docker test image...
+      - docker ps
       - docker build -t dashboard -f Dockerfile .
       - echo Build started on `date`
       - echo Building the Docker image...
