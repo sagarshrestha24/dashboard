@@ -21,7 +21,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install and test
       
-      run: echo "${{vars.TEST}}"
+      run: npm install
  
   
   
