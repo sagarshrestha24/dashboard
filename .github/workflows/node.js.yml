@@ -21,7 +21,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install and test
       
-      run: npm install
+      run: npm ins2tall
+      
  
   
   
